@@ -1,0 +1,264 @@
+create database vehicle_dbms;
+use vehicle_dbms;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+-- --  
+-- Database: `vehicle_management`
+-- --  
+
+-- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --  
+
+-- --  
+-- Table structure for table `admins`
+-- --  
+
+CREATE TABLE `admins` (
+  `admins_id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --  
+-- Dumping data for table `admins`
+-- --  
+
+
+INSERT INTO `admins` (`admins_id`, `username`, `password`) VALUES
+(1, 'gauravi', 'gauravi@1');
+
+-- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --  
+
+-- --  
+-- Table structure for table `bill`
+-- --  
+
+CREATE TABLE `bill` (
+  `bill_id` int(11) NOT NULL,
+  `trip_id` varchar(255) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `tcost` int(255) NOT NULL,
+  `paid` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --  
+-- Dumping data for table `bill`
+-- --  
+
+INSERT INTO `bill` (`bill_id`, `trip_id`, `username`, `tcost`,`paid`) VALUES
+(50,	300,	'danish@47',	200,	1),
+(51,	301,	'adib@48',		192,	1),
+(52,	302,	'ajzhal@49',	167,	1),
+(53,	303,	'neel@50',		550,	1),
+(54,	304,	'sia@51',	    187,	1);
+
+-- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --  
+
+-- --  
+-- Table structure for table `booking`
+-- --  
+CREATE TABLE `booking` (
+  `booking_id` int(11) NOT NULL,
+  `passenger_name` varchar(255) NOT NULL,
+  `user_name` varchar(100) NOT NULL,
+  `veh_type` varchar(8) NOT NULL,
+  `registration_date` varchar(100) NOT NULL,
+  `registration_time` varchar(100) NOT NULL,
+  `return_date` varchar(100) NOT NULL,
+  `return_time` varchar(100) NOT NULL,
+  `destination_point` varchar(100) NOT NULL,
+  `pickup_point` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mobile` int(14) NOT NULL,
+  `confirmation` int(11) NOT NULL,
+  `veh_id` varchar(255) NOT NULL,
+  `driverid` int(11) NOT NULL,
+  `paid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --  
+-- Dumping data for table `booking`
+-- --  
+
+INSERT INTO `booking` (`booking_id`, `passenger_name`, `user_name`, `veh_type`, `registration_date`, `registration_time`, `return_date`, `return_time`, `destination_point`, `pickup_point`, `email`, `mobile`, `confirmation`, `veh_id`, `driverid`, `paid`) VALUES
+(10, 'danish', 'danish@47', 'car', '05/03/2021', '7 : 19 AM', '05/03/2021', '7 : 30AM', 'melon lane', 'mall', 'danish@gmail.com', 345676, 1, 'mh-0987', 100, 1),
+(11, 'adib', 'adib@48', 'car', '05/03/2021', '7 : 22 AM', '05/03/2021', '8 : 00AM', 'park', 'hotel', 'adib@gmail.com', 213456, 1, 'mh- 4322', 101, 1),
+(12, 'ajzhal', 'ajzhal@49', 'auto', '05/03/2021', '7 : 32 AM', '05/03/2021', '7 : 51AM', 'mall', 'melon', 'ajzhal@gmail.com', 456787, 1, 'mh-2344', 102, 1),
+(13, 'neel', 'neel@50', 'car', '07/03/2021', '8 : 55 PM', '07/03/2021', '9 : 55 PM', 'hotel', 'berry', 'neel@gmail.com', 234564, 1, 'mh-0987', 100, 1),
+(14, 'sia', 'sia@51', 'car', '07/03/2021', '9 : 05 PM', '07/03/2021', '9 : 35 PM', 'berry lane', 'park', 'sia@gmail.com', 123456, 1, 'mh- 9876', 101, 1);
+
+-- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --  
+
+-- --  
+-- --  Table structure for table `driver`
+-- --  
+
+CREATE TABLE `driver` (
+  `driverid` int(11) NOT NULL,
+  `drname` varchar(255) NOT NULL,
+  `drmobile` varchar(20) NOT NULL,
+  `drlicense` varchar(30) NOT NULL,
+  `drlicensevalid` varchar(100) NOT NULL,
+  `draddress` varchar(255) NOT NULL,
+  `dr_available` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --  
+-- Dumping data for table `driver`
+-- --  
+
+INSERT INTO `driver` (`driverid`, `drname`, `drmobile`, `drlicense`, `drlicensevalid`, `draddress`, `dr_available`) VALUES
+(100, 'neha', '12345678', 'neha12345', '10/12/2028', 'chikoo,maharashtra', 1),
+(101, 'zeeshan', '23456788', 'zeesh9876', '2/12/2040', 'apple,maharashtra', 1),
+(102, 'anas', '76543214', 'anas65434', '9/11/2028', 'berry/maharashtra', 1),
+(103, 'noor', '56432354', 'noor23445', '31/12/2020', 'tomato/maharashtra', 0);
+
+-- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --  
+
+-- --  
+-- Table structure for table `tripcost`
+-- --  
+
+CREATE TABLE `tripcost` (
+  `trip_id` int(11) NOT NULL,
+  `booking_id` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `total_km` varchar(11) NOT NULL,
+  `oil_cost` varchar(11) NOT NULL,
+  `extra_cost` varchar(11) NOT NULL,
+  `total_cost` varchar(11) NOT NULL,
+  `paid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --  
+-- Dumping data for table `tripcost`
+-- --  
+
+INSERT INTO `tripcost` (`trip_id`, `booking_id`, `username`, `total_km`, `oil_cost`, `extra_cost`, `total_cost`, `paid`) VALUES
+(300, '10', 'danish@47', '20', '200', '0', '200', 10),
+(301, '11', 'adib@48', '18', '180', '12', '192', 1),
+(302, '12', 'ajzhal@49', '15', '150', '17', '167', 1),
+(303, '13', 'neel@50', '50', '500', '0', '550', 1),
+(304, '14', 'sia@51', '17', '170', '0', '187', 1);
+
+-- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --   -- --  
+
+-- --  
+-- Table structure for table `vehicle`
+-- --  
+
+CREATE TABLE `vehicle` (
+  `veh_id` int(11) NOT NULL,
+  `veh_reg` varchar(100) NOT NULL,
+  `veh_type` varchar(20) NOT NULL,
+  `brand` varchar(100) NOT NULL,
+  `veh_color` varchar(100) NOT NULL,
+  `veh_regdate` varchar(100) NOT NULL,
+  `veh_available` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --  
+-- Dumping data for table `vehicle`
+-- --  
+
+INSERT INTO `vehicle` (`veh_id`, `veh_reg`, `veh_type`, `brand`, `veh_color`, `veh_regdate`, `veh_available`) VALUES
+(200, 'mh-0987', 'car', 'tata', 'black', '22/12/2012', 1),
+(201, 'mh- 4322', 'car', 'nano', 'white', '2/9/15', 1),
+(202, 'mh-9876', 'car', 'scorpio', 'red', '10/2/2011', 1),
+(203, 'mh-9872', 'minivan', 'maruti', 'green', '1/1/2001', 0),
+(204, 'mh-2344', 'auto', 'honda', 'yellow', '30/2/2010', 1);
+
+-- --  
+-- Indexes for dumped tables
+-- --  
+
+-- --  
+-- Indexes for table `admins`
+-- --  
+
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`admins_id`);
+
+-- --  
+-- Indexes for table `bill`
+-- --  
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`bill_id`);
+
+-- --  
+-- Indexes for table `booking`
+-- --  
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`booking_id`);
+
+-- --  
+-- Indexes for table `driver`
+-- --  
+ALTER TABLE `driver`
+  ADD PRIMARY KEY (`driverid`);
+
+-- --  
+-- Indexes for table `tripcost`
+-- --  
+ALTER TABLE `tripcost`
+  ADD PRIMARY KEY (`trip_id`);
+
+-- --  
+-- Indexes for table `vehicle`
+-- --  
+ALTER TABLE `vehicle`
+  ADD PRIMARY KEY (`veh_id`);
+
+-- --  
+-- AUTO_INCREMENT for dumped tables
+-- --  
+
+-- --  
+-- AUTO_INCREMENT for table `admins`
+-- --  
+ALTER TABLE `admins`
+  MODIFY `admins_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+-- --  
+-- AUTO_INCREMENT for table `bill`
+-- --  
+ALTER TABLE `bill`
+  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+-- --  
+-- AUTO_INCREMENT for table `booking`
+-- --  
+ALTER TABLE `booking`
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+-- --  
+-- AUTO_INCREMENT for table `driver`
+-- --  
+ALTER TABLE `driver`
+  MODIFY `driverid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+-- --  
+-- AUTO_INCREMENT for table `tripcost`
+-- --  
+ALTER TABLE `tripcost`
+  MODIFY `trip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+-- --  
+-- AUTO_INCREMENT for table `vehicle`
+-- --  
+ALTER TABLE `vehicle`
+  MODIFY `veh_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
